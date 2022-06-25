@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 export const Hello = (props: { target: string; interval: number }) => {
   useEffect(() => {
@@ -12,4 +12,9 @@ export const Hello = (props: { target: string; interval: number }) => {
   }, [props.interval])
 
   return <p>{props.target}</p>
+}
+
+export const Counter = () => {
+  const [count, setCount] = useState(0)
+  return <button onClick={() => setCount((c) => c + 1)}>{count}</button>
 }
