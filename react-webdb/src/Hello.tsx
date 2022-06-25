@@ -1,15 +1,15 @@
 import { useEffect } from 'react'
 
-export const Hello = (props: { target: string }) => {
+export const Hello = (props: { target: string; interval: number }) => {
   useEffect(() => {
     const timer = setInterval(() => {
       console.log('Hello!')
-    }, 1000)
+    }, props.interval)
 
     return () => {
       clearInterval(timer)
     }
-  }, [])
+  }, [props.interval])
 
   return <p>{props.target}</p>
 }
