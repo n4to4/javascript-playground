@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, startTransition, Suspense, ChangeEvent } from 'react'
 
 export const Hello = (props: { target: string; interval: number }) => {
   useEffect(() => {
@@ -44,4 +44,36 @@ let count = 0
 export const RenderCount = () => {
   count++
   return <p>ImpureCounter: {count}</p>
+}
+
+export const SearchArea = () => {
+  const [searchQuery, setSearchQuery] = useState('')
+  const [input, setInput] = useState('')
+
+  const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
+    const target = e.currentTarget as HTMLInputElement
+    setInput(target.value)
+    startTransition(() => {
+      setSearchQuery(target.value)
+    })
+  }
+
+  return (
+    <>
+      <p>
+        <input type="search" value={input} onChange={handleInput} />
+      </p>
+      <Suspense fallback={<p>Searching...</p>}>
+        <SearchResult query={searchQuery} />
+      </Suspense>
+    </>
+  )
+}
+
+const SearchResult = (props: { query: string }) => {
+  return (
+    <>
+      <p>Search Result: {props.query}</p>
+    </>
+  )
 }
