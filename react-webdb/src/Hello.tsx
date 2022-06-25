@@ -18,3 +18,19 @@ export const Counter = () => {
   const [count, setCount] = useState(0)
   return <button onClick={() => setCount((c) => c + 1)}>{count}</button>
 }
+
+export const Timer = () => {
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCount((c) => c + 1)
+    }, 1000)
+
+    return () => {
+      clearInterval(timer)
+    }
+  }, [])
+
+  return <p>{count}</p>
+}
