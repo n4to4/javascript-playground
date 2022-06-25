@@ -39,3 +39,9 @@ const useTimer = () => {
 
   return count
 }
+
+let count = 0
+export const RenderCount = () => {
+  count++
+  return <p>ImpureCounter: {count}</p>
+}

@@ -1,6 +1,6 @@
 import logo from './logo.svg'
 import './App.css'
-import { Hello, Counter, Timer } from './Hello'
+import { Hello, Counter, Timer, RenderCount } from './Hello'
 import { Links } from './Links'
 
 function App() {
@@ -13,6 +13,7 @@ function App() {
         <Counter />
         <Timer />
         <Links />
+        <RenderCount />
       </header>
     </div>
   )
