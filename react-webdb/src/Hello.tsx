@@ -20,18 +20,7 @@ export const Counter = () => {
 }
 
 export const Timer = () => {
-  const [count, setCount] = useState(0)
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCount((c) => c + 1)
-    }, 1000)
-
-    return () => {
-      clearInterval(timer)
-    }
-  }, [])
-
+  const count = useTimer()
   return <p>{count}</p>
 }
 
