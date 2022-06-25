@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-export function Hello(props: { target: string }) {
+export const Hello = (props: { target: string }) => {
   useEffect(() => {
     const timer = setInterval(() => {
       console.log('Hello!')
